@@ -2,10 +2,12 @@ fastapi
 uvicorn
 requests
 python-multipart
-tensorflow
+tensorflow-cpu==2.16.1
 numpy
 pandas
 matplotlib
 seaborn
-sk-learn
+scikit-learn
 python-dotenv
+opencv-python-headless
+pillow
