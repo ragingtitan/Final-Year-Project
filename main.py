@@ -38,8 +38,8 @@ MIN_CONTRAST_STD = 12.0
 MIN_UPLOAD_BYTES = 1024
 MAX_UPLOAD_BYTES = 8 * 1024 * 1024
 
-CROP_INFERENCE_TIMEOUT_SECONDS = 20
-DISEASE_INFERENCE_TIMEOUT_SECONDS = 20
+CROP_INFERENCE_TIMEOUT_SECONDS = 60
+DISEASE_INFERENCE_TIMEOUT_SECONDS = 60
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "weights" / "final_model_crop_classifier.keras"
@@ -383,6 +383,8 @@ def load_specialist_models() -> tuple[dict, dict]:
 
         try:
             model = load_inference_model(model_path)
+            dummy = np.zeros((1, IMG_SIZE, IMG_SIZE, 3), dtype=np.float32)
+            model.predict(dummy, verbose=0)
             output_classes = model.output_shape[-1]
 
             aligned_class_names, warning = align_specialist_class_names(
@@ -412,6 +414,8 @@ async def lifespan(app: FastAPI):
         raise RuntimeError(f"Model file not found: {MODEL_PATH}")
 
     model = load_inference_model(MODEL_PATH)
+    dummy = np.zeros((1, IMG_SIZE, IMG_SIZE, 3), dtype=np.float32)
+    model.predict(dummy, verbose=0)
     output_classes = model.output_shape[-1]
 
     if output_classes != len(CLASS_NAMES):
