@@ -1,0 +1,19 @@
+{
+  "class_names": [
+    "Tomato healthy",
+    "Tomato leaf blight",
+    "Tomato leaf curl",
+    "Tomato septoria leaf spot",
+    "Tomato verticulium wilt",
+    "Unknown"
+  ],
+  "class_indices": {
+    "Tomato healthy": 0,
+    "Tomato leaf blight": 1,
+    "Tomato leaf curl": 2,
+    "Tomato septoria leaf spot": 3,
+    "Tomato verticulium wilt": 4,
+    "Unknown": 5
+  },
+  "num_classes": 6
+}
