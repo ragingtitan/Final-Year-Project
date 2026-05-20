@@ -11,3 +11,4 @@ scikit-learn
 python-dotenv
 opencv-python-headless
 pillow
+fastapi[standard]
